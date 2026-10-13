@@ -1193,6 +1193,29 @@
         window.onload = function() {
             renderTodaySummary();
         };
+        db.ref('prenotazioni/').push({
+  studente: nomeUtente,
+  pc: numeroPc,
+  orario: orarioSelezionato
+});
+        db.ref('prenotazioni/').on('value', (snapshot) => {
+  const dati = snapshot.val();
+  // Qui aggiorni la grafica della tua pagina con i dati ricevuti
+});
     </script>
 </body>
 </html>
+<!-- Importa Firebase dai server ufficiali -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+      // La configurazione del vostro database
+      const firebaseConfig = {
+        databaseURL: "https://prenotazioni-chromebook-default-rtdb.europe-west1.firebasedatabase.app/"
+      };
+
+      // Inizializzazione di Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+    </script>
